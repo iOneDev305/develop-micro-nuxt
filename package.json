@@ -1,0 +1,13 @@
+{
+  "name": "micro-dashboard",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "cd apps/shell && npm run dev",
+    "build": "cd apps/shell && npm run build",
+    "start": "cd apps/shell && npm run start"
+  }
+} 
