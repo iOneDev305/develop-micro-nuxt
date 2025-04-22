@@ -1,15 +1,11 @@
 <template>
   <div>
-    <h1>Redirecting to Analytics...</h1>
+    <slot />
   </div>
 </template>
 
 <script setup>
 definePageMeta({
   layout: 'default'
-})
-
-onMounted(() => {
-  navigateTo('/analytics')
 })
 </script> 

@@ -112,8 +112,8 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const navigation = [
-  { name: 'Analytics', href: '/feature-a', icon: 'heroicons:chart-bar', badge: 'New' },
-  { name: 'Users', href: '/feature-b', icon: 'heroicons:users' },
+  { name: 'Analytics', href: '/analytics', icon: 'heroicons:chart-bar', badge: 'New' },
+  { name: 'Users', href: '/users', icon: 'heroicons:users' },
   { name: 'Projects', href: '/projects', icon: 'heroicons:folder' },
   { name: 'Calendar', href: '/calendar', icon: 'heroicons:calendar' },
 ]

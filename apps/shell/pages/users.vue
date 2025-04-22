@@ -1,15 +1,13 @@
 <template>
   <div>
-    <h1>Redirecting to Analytics...</h1>
+    <RemoteFeature feature="user" />
   </div>
 </template>
 
 <script setup>
+import RemoteFeature from '~/components/RemoteFeature.vue'
+
 definePageMeta({
   layout: 'default'
-})
-
-onMounted(() => {
-  navigateTo('/analytics')
 })
 </script> 

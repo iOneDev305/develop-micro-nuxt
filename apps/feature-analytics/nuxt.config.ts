@@ -1,50 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     'nuxt-icon'
   ],
-
   colorMode: {
     classSuffix: '',
   },
-
-  pages: true,
-
-  app: {
-    baseURL: '/',
-    head: {
-      title: 'Micro Dashboard',
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: '' }
-      ],
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-      ]
-    }
-  },
-
-  components: {
-    dirs: [
-      '~/components',
-      '../feature-analytics/components',
-      '../feature-user/components'
-    ]
-  },
-
-  compatibilityDate: '2025-04-22',
-
-  // Add route rules for features
-  routeRules: {
-    '/feature-analytics': { ssr: false },
-    '/feature-user': { ssr: false }
-  },
-
   experimental: {
     asyncContext: true,
     asyncEntry: true,
@@ -55,7 +19,6 @@ export default defineNuxtConfig({
     viewTransition: true,
     writeEarlyHints: true,
   },
-
   vite: {
     build: {
       target: 'esnext',
@@ -71,10 +34,17 @@ export default defineNuxtConfig({
       },
     },
   },
-
   nitro: {
     experimental: {
       asyncContext: true,
     },
   },
+  app: {
+    baseURL: '/feature-analytics',
+  },
+  pages: true,
+  components: {
+    global: true,
+    dirs: ['~/components']
+  }
 })

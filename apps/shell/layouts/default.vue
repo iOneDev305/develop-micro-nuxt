@@ -50,6 +50,7 @@
 import { ref } from 'vue'
 import Sidebar from '~/components/Sidebar.vue'
 import ColorModeButton from '~/components/ColorModeButton.vue'
+import SideMenu from '~/components/SideMenu.vue'
 
 const isSidebarOpen = ref(false)
 </script>

@@ -1,5 +1,5 @@
 {
-  "name": "shell",
+  "name": "feature-a",
   "private": true,
   "type": "module",
   "scripts": {
@@ -20,5 +20,11 @@
   "devDependencies": {
     "@types/node": "^20.11.19",
     "typescript": "^5.3.3"
-  }
+  },
+  "version": "1.0.0",
+  "description": "Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
