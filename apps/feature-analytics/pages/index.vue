@@ -177,7 +177,6 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import { useAuth } from '../../shell/composables/useAuth';
 const selectedTimeRange = ref('week')
 const selectedTrafficType = ref('visitors')
 const selectedRevenueType = ref('daily')
@@ -197,8 +196,4 @@ const formatNumber = (num) => {
   return new Intl.NumberFormat().format(num)
 }
 
-onMounted(() => {
-  console.log('User Feature - Current Token:', token.value);
-  console.log('User Feature - Current User:', user.value);
-});
 </script> 

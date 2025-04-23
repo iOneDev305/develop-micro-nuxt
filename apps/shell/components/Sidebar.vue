@@ -113,7 +113,7 @@ const route = useRoute()
 
 const navigation = [
   { name: 'Analytics', href: '/analytics', icon: 'heroicons:chart-bar', badge: 'New' },
-  { name: 'Users', href: '/users', icon: 'heroicons:users' },
+  { name: 'Users', href: '/admin', icon: 'heroicons:users' },
   { name: 'Projects', href: '/projects', icon: 'heroicons:folder' },
   { name: 'Calendar', href: '/calendar', icon: 'heroicons:calendar' },
 ]

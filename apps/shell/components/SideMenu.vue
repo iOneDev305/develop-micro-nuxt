@@ -12,9 +12,9 @@
           Analytics
         </NuxtLink>
         <NuxtLink 
-          to="/users" 
+          to="/admin" 
           class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
-          :class="{ 'bg-gray-100 dark:bg-gray-700': $route.path === '/users' }"
+          :class="{ 'bg-gray-100 dark:bg-gray-700': $route.path === '/admin' }"
         >
           <Icon name="heroicons:users" class="h-5 w-5 mr-2" />
           Users

@@ -117,6 +117,9 @@ export default defineNuxtConfig({
     '/feature-user': { ssr: false }
   },
 
+  // Add global middleware
+  middleware: ['auth'],
+
   alias: {
     '@shell': '~/apps/shell'
   },
