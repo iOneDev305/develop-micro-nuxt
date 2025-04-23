@@ -116,4 +116,8 @@ export default defineNuxtConfig({
     '/feature-analytics': { ssr: false },
     '/feature-user': { ssr: false }
   },
+
+  alias: {
+    '@shell': '~/apps/shell'
+  },
 })

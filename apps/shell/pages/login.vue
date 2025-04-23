@@ -2,9 +2,11 @@
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { loginUser } from '../utils/api';
+import { useAuth } from '../composables/useAuth';
+import type { LoginResponse } from '../types/auth';
 
 definePageMeta({
-  layout: 'blank'
+  layout: false
 });
 
 const router = useRouter();
@@ -25,10 +27,14 @@ const handleSubmit = async () => {
   isLoading.value = true;
 
   try {
-    await loginUser({
+    const response = await loginUser({
       username: username.value,
       password: password.value,
-    });
+    }) as LoginResponse;
+    
+    const { setUser, setToken } = useAuth();
+    setToken(response.token);
+    setUser(response.user);
     
     // Redirect to the original destination or home page
     const redirectPath = route.query.redirect as string || '/';

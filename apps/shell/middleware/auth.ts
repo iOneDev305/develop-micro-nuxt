@@ -1,9 +1,23 @@
-export default defineNuxtRouteMiddleware((to) => {
-  // This is a placeholder for your actual authentication logic
-  // You should replace this with your real authentication check
-  const isAuthenticated = true // Replace with your actual auth check
+import { useAuth } from '../composables/useAuth';
 
-  if (!isAuthenticated) {
-    return navigateTo('/')
+export default defineNuxtRouteMiddleware((to) => {
+  const { isAuthenticated } = useAuth();
+
+  // Public routes that don't require authentication
+  const publicRoutes = ['/login', '/register', '/forgot-password'];
+  
+  if (!isAuthenticated.value && !publicRoutes.includes(to.path)) {
+    // Save the intended destination for redirect after login
+    return navigateTo(`/login?redirect=${encodeURIComponent(to.fullPath)}`);
   }
-}) 
+
+  // Role-based route protection
+  if (to.meta.requiresRole) {
+    const { hasRole } = useAuth();
+    const requiredRole = to.meta.requiresRole as 'admin' | 'user' | 'analyst';
+    
+    if (!hasRole(requiredRole)) {
+      return navigateTo('/unauthorized');
+    }
+  }
+}); 

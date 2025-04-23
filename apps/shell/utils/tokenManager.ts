@@ -2,23 +2,17 @@
  * Token manager utility for handling authentication tokens with expiration time
  */
 
-interface TokenData {
-  token: string;
-  expiresAt: number;
-}
+const TOKEN_KEY = 'auth_token';
 
 /**
  * Save token with expiration time to localStorage
  * @param token - The token to save
  * @param expirationInMinutes - Token expiration time in minutes (default: 60 minutes)
  */
-export const saveToken = (token: string, expirationInMinutes: number = 60): void => {
-  const expiresAt = Date.now() + expirationInMinutes * 60 * 1000;
-  const tokenData: TokenData = {
-    token,
-    expiresAt,
-  };
-  localStorage.setItem('authToken', JSON.stringify(tokenData));
+export const saveToken = (token: string): void => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem(TOKEN_KEY, token);
+  }
 };
 
 /**
@@ -26,20 +20,10 @@ export const saveToken = (token: string, expirationInMinutes: number = 60): void
  * @returns The token if valid, null otherwise
  */
 export const getToken = (): string | null => {
-  const tokenData = localStorage.getItem('authToken');
-  if (!tokenData) return null;
-
-  try {
-    const { token, expiresAt } = JSON.parse(tokenData) as TokenData;
-    if (Date.now() > expiresAt) {
-      removeToken();
-      return null;
-    }
-    return token;
-  } catch (error) {
-    removeToken();
-    return null;
+  if (typeof window !== 'undefined') {
+    return window.localStorage.getItem(TOKEN_KEY);
   }
+  return null;
 };
 
 /**
@@ -54,7 +38,9 @@ export const isTokenValid = (): boolean => {
  * Remove token from localStorage
  */
 export const removeToken = (): void => {
-  localStorage.removeItem('authToken');
+  if (typeof window !== 'undefined') {
+    window.localStorage.removeItem(TOKEN_KEY);
+  }
 };
 
 /**
