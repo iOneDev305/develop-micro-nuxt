@@ -33,6 +33,9 @@ onMounted(async () => {
       // Import the analytics page directly from feature-analytics
       const module = await import('../../feature-analytics/pages/index.vue')
       remoteComponent.value = module.default
+    }else if (props.feature === 'admin') {
+      const module = await import('../../feature-admin/pages/index.vue')
+      remoteComponent.value = module.default
     } else if (props.feature === 'user') {
       const module = await import('../../feature-user/pages/index.vue')
       remoteComponent.value = module.default
